@@ -1,4 +1,10 @@
+import SignInService from "@/services/signin-service";
+
 const SignIn = () => {
-  return <div>Sighn in page</div>;
+  return (
+    <div>
+      <SignInService />
+    </div>
+  );
 };
 export default SignIn;
