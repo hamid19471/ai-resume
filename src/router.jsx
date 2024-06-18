@@ -4,10 +4,16 @@ import Home from "./pages/home";
 import DashboardLayout from "./layout/dahboard-layout/dashboard-layout";
 import SignIn from "./pages/sign-in";
 import Dashboard from "./pages/dashboard";
+import MainLayout from "./layout/main-layout/mian-layout";
 export const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Home />,
+    element: <MainLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+    ],
   },
   {
     element: <AuthLayout />,
