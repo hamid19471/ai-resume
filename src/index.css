@@ -2,7 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-.cl-internal-180wb59 {
+body {
+  @apply bg-violet-100;
+}
+
+.cl-internal-180wb59,
+.cl-internal-11ttlho,
+.cl-internal-16mc20d {
   display: none;
 }
 
