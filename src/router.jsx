@@ -6,6 +6,7 @@ import SignIn from "./pages/sign-in";
 import Dashboard from "./pages/dashboard";
 import MainLayout from "./layout/main-layout/mian-layout";
 import Register from "./pages/register";
+import EditResume from "./pages/[resumeId]";
 export const router = createBrowserRouter([
   {
     element: <MainLayout />,
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard />,
+      },
+      {
+        path: "/dashboard/resume/:resumeId/edit",
+        element: <EditResume />,
       },
     ],
   },
