@@ -12,14 +12,16 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { v4 as uuidv4 } from "uuid";
 import { useUser } from "@clerk/clerk-react";
-import { httpService } from "@/core/HttpService";
+import { CreateNewResume } from "@/core/HttpService";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const CreateResume = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [resumeTitle, setResumeTitle] = useState("");
   const [loading, setLoading] = useState(false);
   const { user } = useUser();
-
+  const navigate = useNavigate();
   const handleSubmitTitle = async () => {
     setLoading(true);
     const uuid = uuidv4();
@@ -32,10 +34,12 @@ const CreateResume = () => {
       },
     };
     try {
-      const res = await httpService.post("/user-resumes", data);
+      const res = CreateNewResume(data);
       if (res) {
         setOpenDialog(false);
         setResumeTitle("");
+        toast.success("Resume created successfully");
+        navigate(`/dashboard/resume/${res.data.data.documentId}/edit`);
       }
     } catch (error) {
       if (error) {
@@ -49,10 +53,11 @@ const CreateResume = () => {
   return (
     <>
       <div
-        className="mt-12 px-12 py-36 bg-white/20 flex items-center justify-center rounded-xl shadow-md cursor-pointer hover:scale-105 duration-150 transition-all"
+        className="mt-12 px-12 py-36 bg-white/20 flex flex-col items-center justify-center rounded-xl shadow-md cursor-pointer"
         onClick={() => setOpenDialog(true)}
       >
         <PlusSquare className="w-7 h-7" />
+        Create New Resume
       </div>
       <Dialog open={openDialog} onOpenChange={() => setOpenDialog(false)}>
         <DialogContent className="sm:max-w-md">
@@ -82,7 +87,10 @@ const CreateResume = () => {
               >
                 Cancel
               </Button>
-              <Button onClick={handleSubmitTitle}>
+              <Button
+                disabled={loading || resumeTitle.length < 5}
+                onClick={handleSubmitTitle}
+              >
                 {loading ? <Loader2 className="animate-spin" /> : "Create"}
               </Button>
             </div>
