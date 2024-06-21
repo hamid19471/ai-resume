@@ -10,3 +10,11 @@ export const httpService = axios.create({
     "Content-Type": "application/json",
   },
 });
+
+export const CreateNewResume = (data) =>
+  httpService.post("/user-resumes", data);
+
+export const getUserResumes = (userEmail) =>
+  httpService.get("/user-resumes?filters[userEmail][$eq]=" + userEmail);
+
+export const getResumeById = (id) => httpService.get("/user-resumes/" + id);
