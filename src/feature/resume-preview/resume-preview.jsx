@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import PersonalInformation from "./components/personal-information";
 import SummeryInformation from "./components/summery-information";
 import ExperienceInformation from "./components/experience-information";
+import EducationInformation from "./components/education-information";
+import SkillsInformation from "./components/skills-information";
 
 const ResumePreview = () => {
   const { resumeId } = useParams();
@@ -19,6 +21,8 @@ const ResumePreview = () => {
       <PersonalInformation resumeInfo={resumeInfo} />
       <SummeryInformation resumeInfo={resumeInfo} />
       <ExperienceInformation resumeInfo={resumeInfo} />
+      <EducationInformation resumeInfo={resumeInfo} />
+      <SkillsInformation resumeInfo={resumeInfo} />
     </div>
   );
 };

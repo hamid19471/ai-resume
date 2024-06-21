@@ -1,3 +1,5 @@
+import Divider from "@/components/ui/divider";
+
 const SummeryInformation = ({ resumeInfo }) => {
   return (
     <div>
@@ -10,10 +12,7 @@ const SummeryInformation = ({ resumeInfo }) => {
       <p className="font-light text-md text-justify mt-2 leading-7">
         {resumeInfo?.summery}
       </p>
-      <hr
-        className="my-4 h-2"
-        style={{ backgroundColor: resumeInfo?.themeColor }}
-      />
+      <Divider resumeInfo={resumeInfo} />
     </div>
   );
 };
