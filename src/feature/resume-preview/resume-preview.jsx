@@ -8,11 +8,11 @@ import EducationInformation from "./components/education-information";
 import SkillsInformation from "./components/skills-information";
 
 const ResumePreview = () => {
-  const { resumeId } = useParams();
+  const { documentId } = useParams();
   const { resumeInfo, ResumeById } = useAppContext();
-  // useEffect(() => {
-  //   resumeId && ResumeById(resumeId);
-  // }, [resumeId]);
+  useEffect(() => {
+    documentId && ResumeById(documentId);
+  }, [documentId]);
   return (
     <div
       className="bg-white w-full p-8 flex flex-col border-t-[20px] "

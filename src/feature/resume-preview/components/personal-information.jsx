@@ -13,7 +13,7 @@ const PersonalInformation = ({ resumeInfo }) => {
         >
           {resumeInfo?.jobTitle}
         </h3>
-        <div className="flex items-center justify-center gap-2">
+        {/* <div className="flex items-center justify-center gap-2">
           {resumeInfo?.social.map((item) => (
             <a
               href={item.link}
@@ -24,7 +24,7 @@ const PersonalInformation = ({ resumeInfo }) => {
               <img src={item.icon} alt={item.name} width={20} height={20} />
             </a>
           ))}
-        </div>
+        </div> */}
       </div>
       <div className="flex items-center justify-between w-full gap-2">
         <h3 className="font-light text-md flex flex-col text-sm">

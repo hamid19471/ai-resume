@@ -7,13 +7,13 @@ const SkillsInformation = ({ resumeInfo }) => {
       >
         Skills
       </h2>
-      <ul className="grid grid-cols-2">
+      <ul className="grid grid-cols-2 ">
         {resumeInfo?.skills?.map((item) => (
           <li key={item.id}>
             <div className="flex items-center justify-between gap-3 mb-3">
-              <h3 className="font-light text-md">
-                <span className="font-semibold">{item.name}</span>
-              </h3>
+              <ul className="font-light text-md list-disc">
+                <li className="font-semibold text-sm">{item.name}</li>
+              </ul>
             </div>
           </li>
         ))}
