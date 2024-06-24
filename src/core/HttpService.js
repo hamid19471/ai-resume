@@ -18,3 +18,6 @@ export const getUserResumes = (userEmail) =>
   httpService.get("/user-resumes?filters[userEmail][$eq]=" + userEmail);
 
 export const getResumeById = (id) => httpService.get("/user-resumes/" + id);
+
+export const EditResumeById = (id, data) =>
+  httpService.put(`/user-resumes/${id}`, data);
