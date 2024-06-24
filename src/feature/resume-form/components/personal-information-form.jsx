@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { useAppContext } from "@/context/app-context/app-context";
 import { EditResumeById } from "@/core/HttpService";
 import { Loader } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
@@ -85,12 +85,16 @@ const PersonalInformationForm = ({ activeStep }) => {
     },
   };
   const formValues = watch();
-  const allFormFieldValues = Object.values(formValues).every((value) => value);
-  if (allFormFieldValues) {
-    activeStep(true);
-  } else {
-    activeStep(false);
-  }
+  useEffect(() => {
+    const allFormFieldValues = Object.values(formValues).every(
+      (value) => value
+    );
+    if (allFormFieldValues) {
+      activeStep(true);
+    } else {
+      activeStep(false);
+    }
+  }, [formValues, activeStep]);
   const handlePersonalInformation = async (data) => {
     setLoading(true);
     const res = await EditResumeById(params.documentId, { data });
