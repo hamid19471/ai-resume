@@ -1,18 +1,18 @@
 import { getResumeById } from "@/core/HttpService";
-import dummy from "@/data/dummy";
-import { createContext, useContext, useEffect, useState } from "react";
+// import dummy from "@/data/dummy";
+import { createContext, useContext, useState } from "react";
 
 const AppContext = createContext(null);
 
 const AppContextProvider = ({ children }) => {
-  const [resumeInfo, setResumeInfo] = useState(dummy);
+  const [resumeInfo, setResumeInfo] = useState({});
 
-  // const ResumeById = async (resumeId) => {
-  //   const { data } = await getResumeById(resumeId);
-  //   setResumeInfo(data.data);
-  // };
+  const ResumeById = async (documentId) => {
+    const { data } = await getResumeById(documentId);
+    setResumeInfo(data.data);
+  };
   return (
-    <AppContext.Provider value={{ resumeInfo, setResumeInfo }}>
+    <AppContext.Provider value={{ resumeInfo, setResumeInfo, ResumeById }}>
       {children}
     </AppContext.Provider>
   );
